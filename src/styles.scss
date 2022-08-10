@@ -1,0 +1,114 @@
+@import '/src/base';
+
+$shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+	6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+	12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+	22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+	41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05), 100px 100px 80px rgba(0, 0, 0, 0.07);
+$width: 30rem;
+
+body {
+	background-image: url(./assets/white-paint-roller.png);
+	background-repeat: no-repeat;
+	background-position: top;
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+	color: white;
+	overflow: hidden;
+
+	display: grid;
+	place-self: center;
+	place-items: center;
+}
+// fade in animation
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-100%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+// slide in from right animation
+@keyframes slideInRight {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+// slide in from left animation
+@keyframes slideInLeft {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+main {
+	text-align: center;
+	display: grid;
+	place-items: center;
+	grid-template-rows: auto auto;
+	gap: 3rem;
+	width: 100%;
+	max-width: $width;
+
+	& h1 {
+		font-size: 2.4rem;
+		background-color: rgba(0, 0, 0, 0.8);
+		backdrop-filter: blur(5px);
+		padding: 1.8rem 2.3rem;
+		border-radius: 25px;
+		box-shadow: $shadow;
+		animation: fadeIn 1s;
+	}
+}
+
+.link-container {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 1.2rem;
+	place-items: center;
+	margin-top: 2rem;
+	width: 100%;
+	margin-bottom: 10rem;
+
+	& a {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		text-decoration: none;
+		color: white;
+		font-size: 2.2rem;
+		background-color: rgba(0, 0, 0, 0.8);
+		backdrop-filter: blur(5px);
+		padding: 1.5rem 2.3rem;
+		border-radius: 25px;
+		box-shadow: $shadow;
+		width: 100%;
+		transition: 0.1s all;
+
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.9);
+		}
+
+		&:nth-child(even) {
+			animation: slideInLeft 1s cubic-bezier(0.68, -0.1, 0.265, 1.15);
+		}
+		&:nth-child(odd) {
+			animation: slideInRight 1s cubic-bezier(0.68, -0.1, 0.265, 1.15);
+		}
+
+		& img {
+			width: 4rem;
+		}
+	}
+}
